@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public enum BatteryCapacity {
 
@@ -19,6 +19,12 @@ public enum BatteryCapacity {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return name() + ", " +
+                "Cena: " + price;
     }
 
 }

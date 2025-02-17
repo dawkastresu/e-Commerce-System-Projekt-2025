@@ -10,7 +10,7 @@ The goal of this project is to create a complete online shop system in Java. The
 ## 💻 Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/dawkastresu/e-Commerce-system.git
+   git clone https://github.com/dawkastresu/Online-Shop-System.git
    ```
 2. Open the project in your IDE (e.g., IntelliJ IDEA).
 

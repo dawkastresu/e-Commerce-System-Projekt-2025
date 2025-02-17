@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public enum RAM {
 
@@ -20,4 +20,11 @@ public enum RAM {
     public double getPrice() {
         return price;
     }
+
+    @Override
+    public String toString() {
+        return name() + ", " +
+                "Cena: " + price;
+    }
+
 }

@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public enum Processor {
 
@@ -26,5 +26,11 @@ public enum Processor {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return name() + ", " +
+                "Cena: " + price;
     }
 }

@@ -1,13 +1,12 @@
-package UI;
+package ui;
 
-import Model.*;
-import Services.*;
+import model.*;
+import services.*;
 
 import java.io.*;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.function.Predicate;
 
 public class CommandLineInterface {
 
@@ -19,16 +18,16 @@ public class CommandLineInterface {
 
     private Scanner scanner;
 
-    private DiscountProcessor discountProcessor;
+    private Discount discount;
 
     Random random = new Random();
 
 
-    public CommandLineInterface(ProductManager productManager, OrderProcessor orderProcessor, DiscountProcessor discountProcessor) {
+    public CommandLineInterface(ProductManager productManager, OrderProcessor orderProcessor, Discount discount) {
         this.productManager = productManager;
         this.orderProcessor = orderProcessor;
         this.scanner = new Scanner(System.in);
-        this.discountProcessor = discountProcessor;
+        this.discount = discount;
         this.cart = new Cart();
     }
 
@@ -37,7 +36,7 @@ public class CommandLineInterface {
 
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Files/products.dat"));
              ObjectInputStream ois2 = new ObjectInputStream(new FileInputStream("Files/cart.dat"));
-             ObjectInputStream ois3 = new ObjectInputStream(new FileInputStream("Files/cart.dat"))) {
+             ObjectInputStream ois3 = new ObjectInputStream(new FileInputStream("Files/discounts.dat"))) {
 
             // Wczytanie listy produktów
             List<Product> products = (List<Product>) ois.readObject();
@@ -48,8 +47,8 @@ public class CommandLineInterface {
             cart.setItems(cartItems);
 
             // Wczytanie promocji
-            List<Discount> discounts = (List<Discount>) ois3.readObject();
-            discountProcessor.setDiscountList(discounts);
+            List<Discount.DiscountRule> discounts = (List<Discount.DiscountRule>) ois3.readObject();
+            discount.setDiscountRules(discounts);
 
             System.out.println("Produkty, promocje oraz zawartość koszyka zostały wczytane z plików.");
         } catch (IOException | ClassNotFoundException e) {
@@ -137,6 +136,7 @@ public class CommandLineInterface {
         System.out.println("Cena nałkowita: " + cart.getTotalPrice());
     }
 
+
     private void placeOrder() {
         if (cart.getItems().isEmpty()) {
             System.out.println("Twój koszyk jest pusty.");
@@ -146,10 +146,15 @@ public class CommandLineInterface {
         System.out.print("Wprowadź imię i nazwisko: ");
         String customerName = scanner.nextLine();
 
-        Order order = new Order(System.currentTimeMillis(), customerName, cart.getItems(), cart.getTotalPrice());
+
+        discount.getApplicableDiscountInfo(cart.getTotalPrice()); //nie wyświetla się
+
+        Order order = new Order(System.currentTimeMillis(), customerName, cart.getItems(), discount.applyDiscount(cart.getTotalPrice()));
+
         orderProcessor.processOrder(order).thenRun(() -> {
             System.out.println("Zamowienie złożone pomyślnie!");
             cart.clear();
+            saveCart();
         });
     }
 
@@ -172,8 +177,9 @@ public class CommandLineInterface {
 
     public void showDiscounts() {
         System.out.println("\n" + "Dostępne promocje");
-        System.out.println();
-        discountProcessor.getDiscountList().forEach(System.out::println);
+        for (Discount.DiscountRule discount : discount.getDiscountRules()) {
+            System.out.println(discount);
+        }
     }
 
     private void adminMode() {
@@ -223,34 +229,128 @@ public class CommandLineInterface {
         System.out.println("Podaj ilość");
         int quantity = scanner.nextInt();
 
-        while (true) {
+        boolean looper = true;
+
+        while (looper == true) {
             System.out.println("Wybierz typ produktu");
             System.out.println("1. Komputer");
             System.out.println("2. Smartfon");
             System.out.println("3. Elektronika");
             int choice = scanner.nextInt();
 
-            Product.ProductType type = null;
-
             switch (choice) {
                 case 1:
-                    productManager.getAllProducts().add(new Product(id, name, price, quantity, Product.ProductType.COMPUTER));
-                    System.out.println("Produkt został dodany do sklepu");
-                    saveProducts();
-                    return;
+                    Processor selectedProcessor = null;
+                    RAM selectedRam = null;
+
+                    while (selectedProcessor == null) {
+                        System.out.println("Wybierz procesor:");
+                        Processor[] processors = Processor.values();
+                        for (int i = 0; i < processors.length; i++) {
+                            System.out.printf("%d. %s - $%.2f%n", i + 1, processors[i].name(), processors[i].getPrice());
+                        }
+
+                        System.out.print("Wprowadź numer procesora: ");
+                        int processorChoice = scanner.nextInt();
+
+                        if (processorChoice >= 1 && processorChoice <= processors.length) {
+                            selectedProcessor = processors[processorChoice - 1];
+                        } else {
+                            System.out.println("Zły numer, wprowadź ponownie.");
+                        }
+                    }
+
+                    while (selectedRam == null) {
+                        System.out.println("Wybierz RAM:");
+                        RAM[] rams = RAM.values();
+                        for (int i = 0; i < rams.length; i++) {
+                            System.out.printf("%d. %s - $%.2f%n", i + 1, rams[i].name(), rams[i].getPrice());
+                        }
+
+                        System.out.print("Wprowadź numer RAMu: ");
+                        int ramChoice = scanner.nextInt();
+
+                        if (ramChoice >= 1 && ramChoice <= rams.length) {
+                            selectedRam = rams[ramChoice - 1];
+                        } else {
+                            System.out.println("Zły numer, wprowadź ponownie.");
+                        }
+                    }
+
+                    productManager.getProducts().add(new Computer(id, name, price, quantity, selectedProcessor, selectedRam));
+                    System.out.println("Dodano nowy komputer.");
+                    looper = false;
+                    break;
                 case 2:
-                    productManager.getAllProducts().add(new Product(id, name, price, quantity, Product.ProductType.SMARTPHONE));
-                    System.out.println("Produkt został dodany do sklepu");
-                    saveProducts();
-                    return;
+                    Accessories selectedAccessories = null;
+                    Colors selectedColor = null;
+                    BatteryCapacity selectedBattery = null;
+
+                    while (selectedAccessories == null) {
+                        System.out.println("Wybierz akcesoria:");
+                        Accessories[] accessories = Accessories.values();
+                        for (int i = 0; i < accessories.length; i++) {
+                            System.out.printf("%d. %s - $%.2f%n", i + 1, accessories[i].name(), accessories[i].getPrice());
+                        }
+
+                        System.out.print("Wprowadź numer akcesorii: ");
+                        int accessoryChoice = scanner.nextInt();
+
+                        if (accessoryChoice >= 1 && accessoryChoice <= accessories.length) {
+                            selectedAccessories = accessories[accessoryChoice - 1];
+                        } else {
+                            System.out.println("Zły numer, wprowadź ponownie.");
+                        }
+                    }
+
+                    while (selectedColor == null) {
+                        System.out.println("Wybierz kolor:");
+                        Colors[] colors = Colors.values();
+                        for (int i = 0; i < colors.length; i++) {
+                            System.out.printf("%d. %s - $%.2f%n", i + 1, colors[i].name(), colors[i].getPrice());
+                        }
+
+                        System.out.print("Wprowadź numer koloru: ");
+                        int colorChoice = scanner.nextInt();
+
+                        if (colorChoice >= 1 && colorChoice <= colors.length) {
+                            selectedColor = colors[colorChoice - 1];
+                        } else {
+                            System.out.println("Zły numer, wprowadź ponownie.");
+                        }
+                    }
+
+                    while (selectedBattery == null) {
+                        System.out.println("Wybierz pojemność baterii:");
+                        BatteryCapacity[] batteries = BatteryCapacity.values();
+                        for (int i = 0; i < batteries.length; i++) {
+                            System.out.printf("%d. %s - $%.2f%n", i + 1, batteries[i].name(), batteries[i].getPrice());
+                        }
+
+                        System.out.print("Wprowadź numer baterii: ");
+                        int batteryChoice = scanner.nextInt();
+
+                        if (batteryChoice >= 1 && batteryChoice <= batteries.length) {
+                            selectedBattery = batteries[batteryChoice - 1];
+                        } else {
+                            System.out.println("Zły numer, wprowadź ponownie.");
+                        }
+                    }
+
+                    productManager.getProducts().add(new Smartphone(id, name, price, quantity, selectedColor ,selectedBattery ,selectedAccessories));
+                    System.out.println("Dodano nowego smartfona.");
+                    looper = false;
+
+                    break;
                 case 3:
-                    productManager.getAllProducts().add(new Product(id, name, price, quantity, Product.ProductType.ELECTRONICS));
-                    System.out.println("Produkt został dodany do sklepu");
-                    saveProducts();
-                    return;
+                    productManager.getProducts().add(new Product(id, name, price, quantity, Product.ProductType.ELECTRONICS));
+                    System.out.println("Dodano nowy produkt.");
+                    looper = false;
+                    break;
                 default:
-                    System.out.println("Niepoprawny wybór, spróbuj jeszcze raz");
+                    System.out.println("Zły wybór, spróbuj jeszcze raz.");
             }
+            saveProducts();
         }
     }
 
@@ -258,8 +358,7 @@ public class CommandLineInterface {
         productManager.getAllProducts()
                 .forEach(product -> System.out.printf("%-20s | %-10.2f | %-5d%n", product.getName(), product.getPrice(), product.getId()));
         System.out.println("Podaj ID produktu który chcesz edytować");
-
-        long choice = scanner.nextLong();
+            long choice = scanner.nextLong();
 
         for (Product product : productManager.getAllProducts()) {
             if (choice == product.getId()) {
@@ -272,7 +371,9 @@ public class CommandLineInterface {
                 System.out.println("Podaj zaktualizowaną ilość");
                 product.setQuantity(scanner.nextInt());
 
-                while (true) {
+                boolean looper = true;
+
+                while (looper) {
                     System.out.println("Wybierz zaktualizowany typ produktu");
                     System.out.println("1. Komputer");
                     System.out.println("2. Smartfon");
@@ -282,12 +383,15 @@ public class CommandLineInterface {
                     switch (typeChoice) {
                         case 1:
                             product.setType(Product.ProductType.COMPUTER);
+                            looper = false;
                             break;
                         case 2:
                             product.setType(Product.ProductType.SMARTPHONE);
+                            looper = false;
                             break;
                         case 3:
                             product.setType(Product.ProductType.ELECTRONICS);
+                            looper = false;
                             break;
                         default:
                             System.out.println("Nie ma takiego typu, podaj jeszcze raz");
@@ -309,49 +413,32 @@ public class CommandLineInterface {
     }
 
     private void addDiscountAdminMode() {
-        System.out.println("Podaj opis promocji");
-        String description = scanner.nextLine();
-        System.out.println("Wybierz warunek dla zniżki:");
-        System.out.println("1. Zniżka dla kwot większych niż...");
-        System.out.println("2. Zniżka dla kwot mniejszych niż...");
-        System.out.println("3. Zniżka dla kwot równych...");
-        System.out.print("Wybierz opcję: ");
-        int choice = scanner.nextInt();
-
-        System.out.print("Podaj wartość progową dla zniżki: ");
+        System.out.println("Podaj wartość progową promocji");
         double threshold = scanner.nextDouble();
+        System.out.println("Podaj wartość procentową zniżki");
+        double percentageOff = scanner.nextDouble();
 
-        // Tworzenie Predicate na podstawie wyboru użytkownika
-        Predicate<Double> condition = null;
-        switch (choice) {
-            case 1:
-                condition = price -> price > threshold;
-                break;
-            case 2:
-                condition = price -> price < threshold;
-                break;
-            case 3:
-                condition = price -> price == threshold;
-                break;
-            default:
-                System.out.println("Nieprawidłowa opcja, wybierz jeszcze raz");
-        }
+        discount.addDiscountRule(threshold, percentageOff);
 
-        System.out.println("Wpisz wartość procentową promocji");
-        double percentage = scanner.nextDouble();
-
-        discountProcessor.getDiscountList().add(new Discount(condition, description, percentage));
-        System.out.println("Pomyślnie utworzono promocję.");
+        System.out.println("Dodano promocję.");
 
         saveDiscounts();
     }
 
     private void removeDiscountAdminMode() {
-        discountProcessor.getDiscountList()
-                .forEach(discount -> System.out.printf("%-20s | %-10.2f", discount.getDescription(), discount.getPercentage()));
+        discount.getDiscountRules()
+                .forEach(discount -> System.out.printf("%-20s | %-10.2f", discount.getThreshold(), discount.getPercentageOff()));
 
-        System.out.println("Wpisz ID Promocji, którą chcesz usunąć");
-        discountProcessor.removeDiscountById(scanner.nextLong());
+        System.out.println("Wpisz wartość progową promocji, którą chcesz usunąć.");
+        double threshold = scanner.nextDouble();
+        System.out.println("Wpisz wartość procentową promocji którą chcesz usunąć.");
+        double percentageOff = scanner.nextDouble();
+
+        for (Discount.DiscountRule discountRule : discount.getDiscountRules()) {
+            if (discountRule.getThreshold() == threshold && discountRule.getPercentageOff() == percentageOff) {
+                discount.getDiscountRules().remove(discountRule);
+            }
+        }
 
         System.out.println("Usunięto promocję.");
         saveDiscounts();
@@ -376,19 +463,24 @@ public class CommandLineInterface {
         int ramChoice = scanner.nextInt();
         RAM selectedRam = RAM.values()[ramChoice - 1];
 
+        System.out.println("Wpisz nazwę:");
+        String customName = scanner.nextLine();
 
 
         double totalPrice = basePrice + selectedProcessor.getPrice() + selectedRam.getPrice();
 
-        Product computer = new Product(random.nextLong(999), "Custom", totalPrice, 1, Product.ProductType.COMPUTER);
+//        String randomId = UUID.randomUUID().toString(); - losowe 32 znaki pod id
+
+        long randomId = random.nextLong(999);
+
+
+        Product computer = new Product(randomId, customName, totalPrice, 1, Product.ProductType.COMPUTER);
 
         System.out.println("\nSkonfigurowany komputer:");
+        System.out.println("Nazwa: " + customName);
         System.out.println("Procesor: " + selectedProcessor + "\n" +
                             "RAM: " + selectedRam);
         System.out.println("Całkowita cena: " + totalPrice + " PLN");
-
-        productManager.getAllProducts().add(new Product(random.nextLong(999), "Custom", totalPrice, 1, Product.ProductType.COMPUTER));
-        saveProducts();
 
 
         System.out.println("Czy chcesz dodać produkt do koszyka?");
@@ -404,8 +496,7 @@ public class CommandLineInterface {
                 saveCart();
                 break;
             case 2:
-                productManager.getAllProducts().remove(computer);
-                saveProducts();
+                System.out.println("Produkt usunięty.");
                 break;
             default:
                 System.out.println("Wybrano nieprawidłową opcję");
@@ -436,20 +527,21 @@ public class CommandLineInterface {
         int accessoryChoice = scanner.nextInt();
         Accessories selectedAccessories = Accessories.values()[accessoryChoice - 1];
 
+        System.out.println("Wpisz nazwę:");
+        String customName = scanner.nextLine();
+
         double totalPrice = basePrice + selectedColor.getPrice() + selectedBattery.getPrice() + selectedAccessories.getPrice();
 
+        long randomId = random.nextLong(999);
 
-
-        Product smartphone = new Product(random.nextLong(999), "Custom", totalPrice, 1, Product.ProductType.SMARTPHONE);
+        Product smartphone = new Product(randomId, customName, totalPrice, 1, Product.ProductType.SMARTPHONE);
 
         System.out.println("\nSkonfigurowany smartfon:");
+        System.out.println("Nazwa: " + customName);
         System.out.println("Kolor: " + selectedColor + "\n" +
                             "Pojemność baterii: " + selectedBattery + "\n" +
                             "Akcesoria: " + selectedAccessories);
         System.out.println("Całkowita cena: " + totalPrice + " PLN");
-
-        productManager.getAllProducts().add(new Product(random.nextLong(999), "Custom", totalPrice, 1, Product.ProductType.SMARTPHONE));
-        saveProducts();
 
 
 
@@ -466,8 +558,7 @@ public class CommandLineInterface {
                 saveCart();
                 break;
             case 2:
-                productManager.getAllProducts().remove(smartphone);
-                saveProducts();
+                System.out.println("Produkt usunięty");
                 break;
             default:
                 System.out.println("Wybrano nieprawidłową opcję");
@@ -503,7 +594,7 @@ public class CommandLineInterface {
 
     private void saveDiscounts() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("Files/discounts.dat"));) {
-            oos.writeObject(discountProcessor.getDiscountList());
+            oos.writeObject(discount.getDiscountRules());
         }catch (IOException e) {
             System.out.println("Nie udało się zapisać promocji");
         }

@@ -1,9 +1,0 @@
-
-----Faktura---------------------------------
-Imie klienta: Mordo Powiedz
-Produkty: 
-[ID: 0, Name: Custom PC, Price: 0.0, Quantity: 0, , Kolor: GOLDEN_ROSE, Pojemność baterii: MAH3400, Akcesoria: CASE
------------------------------------
-, ID: 333, Name: Asus VivoBook 14', Price: 3149.0, Quantity: 8, ]
-Data transakcji: 2025-01-26 21:56:11
-Wartość transakcji: 3149.0

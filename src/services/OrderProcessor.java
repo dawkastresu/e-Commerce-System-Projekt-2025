@@ -1,4 +1,4 @@
-package Services;
+package services;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -21,7 +21,6 @@ public class OrderProcessor {
 
     public CompletableFuture<Void> processOrder(Order order) {
         return CompletableFuture.runAsync(() -> {
-            // Simulate order processing
             orders.add(order);
             generateInvoice(order);
         });

@@ -4,7 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4cb98ce6-f907-4050-a191-8ce3de67acfb" name="Changes" comment="readme.md" />
+    <list default="true" id="17a323b5-f29d-410b-8545-eeef8d615e93" name="Changes" comment="readme.md">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/cart.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/discounts.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Invoices/Faktura nr1, Mordo Powiedz.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/App/ECommerceApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/App/ECommerceApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Accessories.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Accessories.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/BatteryCapacity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/BatteryCapacity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Cart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Colors.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Colors.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Computer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Computer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Processor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Processor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Product$ProductType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Product$ProductType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/RAM.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/RAM.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Smartphone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Smartphone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/Discount.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/Discount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/DiscountProcessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/Order.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/Order.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/OrderProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/OrderProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/ProductManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/ProductManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/UI/CommandLineInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/UI/CommandLineInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App/ECommerceApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ECommerceApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Accessories.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Accessories.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BatteryCapacity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/BatteryCapacity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Colors.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Processor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Processor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/RAM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/RAM.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Smartphone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Smartphone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/DiscountProcessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/OrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/OrderProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UI/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CommandLineInterface.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +60,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,12 +71,12 @@
     &quot;assignee&quot;: &quot;dawkastresu&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/dawkastresu/e-Commerce-System-Projekt-2025.git",
-    "accountId": "d0212d3e-872c-4592-b910-e0ee0c8465fe"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/dawkastresu/e-Commerce-System-Projekt-2025.git&quot;,
+    &quot;accountId&quot;: &quot;d0212d3e-872c-4592-b910-e0ee0c8465fe&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -49,18 +88,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ECommerceApp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ECommerceApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#1 on feature/project&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ECommerceApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="App.ECommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="app.ECommerceApp" />
       <module name="e-Commerce-system" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -69,13 +108,16 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ECommerceApp" />
+        <item itemvalue="Application.ECommerceApp" />
+        <item itemvalue="Application.ECommerceApp" />
+        <item itemvalue="Application.ECommerceApp" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4cb98ce6-f907-4050-a191-8ce3de67acfb" name="Changes" comment="" />
+      <changelist id="17a323b5-f29d-410b-8545-eeef8d615e93" name="Changes" comment="readme.md" />
       <created>1736166388573</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -232,5 +274,15 @@
     <MESSAGE value="dev del" />
     <MESSAGE value="readme.md" />
     <option name="LAST_COMMIT_MESSAGE" value="readme.md" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

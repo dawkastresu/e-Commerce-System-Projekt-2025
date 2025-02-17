@@ -1,4 +1,4 @@
-package Model;
+package model;
 
 public enum Accessories {
 
@@ -21,5 +21,11 @@ public enum Accessories {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return name() + ", " +
+                "Cena: " + price;
     }
 }
