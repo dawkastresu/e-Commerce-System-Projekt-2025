@@ -2,6 +2,7 @@ package ui;
 
 import model.*;
 import services.*;
+import util.InputUtil;
 
 import java.io.*;
 import java.util.List;
@@ -151,9 +152,8 @@ public class CommandLineInterface {
 
         Order order = new Order(System.currentTimeMillis(), customerName, cart.getItems(), discount.applyDiscount(cart.getTotalPrice()));
 
-        orderProcessor.processOrder(order).thenRun(() -> {
+        orderProcessor.processOrder(order, cart).thenRun(() -> {
             System.out.println("Zamowienie złożone pomyślnie!");
-            cart.clear();
             saveCart();
         });
     }
@@ -219,24 +219,23 @@ public class CommandLineInterface {
     }
 
     private void addProductAdminMode() {
-        System.out.println("Podaj ID produktu");
-        long id = scanner.nextLong();
+        long id = InputUtil.validateInput(scanner, "Podaj Id produktu, który chcesz edytować.");
         System.out.println("Podaj nazwę produktu");
         scanner.nextLine();
         String name = scanner.nextLine();
-        System.out.println("Podaj cenę produktu");
-        double price = scanner.nextDouble();
-        System.out.println("Podaj ilość");
-        int quantity = scanner.nextInt();
+        double price = InputUtil.validateInputDouble(scanner, "Podaj cenę produktu.");
+        int quantity = (int) InputUtil.validateInput(scanner, "Podaj ilość produktów.");
+
 
         boolean looper = true;
 
         while (looper == true) {
-            System.out.println("Wybierz typ produktu");
-            System.out.println("1. Komputer");
-            System.out.println("2. Smartfon");
-            System.out.println("3. Elektronika");
-            int choice = scanner.nextInt();
+
+            int choice = (int) InputUtil.validateInput
+                    (scanner, "Wybierz typ produktu" + "\n" +
+                                    "1. Komputer" + "\n" +
+                                    "2. Smartfon" + "\n" +
+                                    "3. Elektronika");
 
             switch (choice) {
                 case 1:
@@ -362,12 +361,10 @@ public class CommandLineInterface {
 
         for (Product product : productManager.getAllProducts()) {
             if (choice == product.getId()) {
-                System.out.println("Podaj zaktualizowane ID produktu");
-                product.setId(scanner.nextLong());
+                product.setId(InputUtil.validateInput(scanner, "Podaj zaktualizowane ID produktu"));
                 System.out.println("Podaj zaktualizowaną nazwę produktu");
                 product.setName(scanner.nextLine());
-                System.out.println("Podaj zaktualizowaną cenę produktu");
-                product.setPrice(scanner.nextDouble());
+                product.setPrice(InputUtil.validateInputDouble(scanner, "Podaj zaktualizowaną cenę produktu."));
                 System.out.println("Podaj zaktualizowaną ilość");
                 product.setQuantity(scanner.nextInt());
 

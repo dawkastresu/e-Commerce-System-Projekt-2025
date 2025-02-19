@@ -1,5 +1,7 @@
 package services;
 
+import model.Cart;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -12,6 +14,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class OrderProcessor {
 
+
+
     private List<Order> orders = new ArrayList<>();
 
     Random random = new Random();
@@ -19,10 +23,11 @@ public class OrderProcessor {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
 
-    public CompletableFuture<Void> processOrder(Order order) {
+    public CompletableFuture<Void> processOrder(Order order, Cart cart) {
         return CompletableFuture.runAsync(() -> {
             orders.add(order);
             generateInvoice(order);
+            cart.clear();
         });
     }
 
