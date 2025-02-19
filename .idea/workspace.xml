@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17a323b5-f29d-410b-8545-eeef8d615e93" name="Changes" comment="readme.md">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/UI/CommandLineInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/UI/CommandLineInterface.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ui/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CommandLineInterface.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,7 +216,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739997962578</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="readme.md">
+      <option name="closed" value="true" />
+      <created>1739998935952</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1739998935952</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

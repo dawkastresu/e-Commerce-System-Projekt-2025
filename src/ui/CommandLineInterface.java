@@ -221,6 +221,7 @@ public class CommandLineInterface {
     private void addProductAdminMode() {
         long id = InputUtil.validateInput(scanner, "Podaj Id produktu.");
         System.out.println("Podaj nazwę produktu");
+        scanner.nextLine();
         String name = scanner.nextLine();
         double price = InputUtil.validateInputDouble(scanner, "Podaj cenę produktu.");
         int quantity = (int) InputUtil.validateInput(scanner, "Podaj ilość produktów.");
