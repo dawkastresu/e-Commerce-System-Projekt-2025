@@ -104,7 +104,7 @@ public class CommandLineInterface {
     private void viewProducts() {
         System.out.println("""
                 
-                Available Products:
+                Dostępne produkty:
                 """);
         for (Product product : productManager.getAllProducts()) {
             System.out.println(product);
@@ -219,9 +219,8 @@ public class CommandLineInterface {
     }
 
     private void addProductAdminMode() {
-        long id = InputUtil.validateInput(scanner, "Podaj Id produktu, który chcesz edytować.");
+        long id = InputUtil.validateInput(scanner, "Podaj Id produktu.");
         System.out.println("Podaj nazwę produktu");
-        scanner.nextLine();
         String name = scanner.nextLine();
         double price = InputUtil.validateInputDouble(scanner, "Podaj cenę produktu.");
         int quantity = (int) InputUtil.validateInput(scanner, "Podaj ilość produktów.");
@@ -356,8 +355,7 @@ public class CommandLineInterface {
     private void editProductAdminMode() {
         productManager.getAllProducts()
                 .forEach(product -> System.out.printf("%-20s | %-10.2f | %-5d%n", product.getName(), product.getPrice(), product.getId()));
-        System.out.println("Podaj ID produktu który chcesz edytować");
-            long choice = scanner.nextLong();
+            long choice = InputUtil.validateInput(scanner, "Podaj id produktu, który chcesz edytować.");
 
         for (Product product : productManager.getAllProducts()) {
             if (choice == product.getId()) {
@@ -365,8 +363,7 @@ public class CommandLineInterface {
                 System.out.println("Podaj zaktualizowaną nazwę produktu");
                 product.setName(scanner.nextLine());
                 product.setPrice(InputUtil.validateInputDouble(scanner, "Podaj zaktualizowaną cenę produktu."));
-                System.out.println("Podaj zaktualizowaną ilość");
-                product.setQuantity(scanner.nextInt());
+                product.setQuantity( (int) InputUtil.validateInput(scanner, "Podaj zaktualizowaną ilość."));
 
                 boolean looper = true;
 
@@ -402,18 +399,15 @@ public class CommandLineInterface {
     private void removeProductAdminMode() {
         productManager.getAllProducts()
                 .forEach(product -> System.out.printf("%-20s | %-10.2f | %-5d%n", product.getName(), product.getPrice(), product.getId()));
-        System.out.println("Podaj ID produktu który chcesz usunąć:");
 
-        productManager.removeProduct(scanner.nextLong());
+        productManager.removeProduct(InputUtil.validateInput(scanner, "Podaj ID produktu, który chcesz usunąć:"));
         System.out.println("Usunięto produkt.");
         saveProducts();
     }
 
     private void addDiscountAdminMode() {
-        System.out.println("Podaj wartość progową promocji");
-        double threshold = scanner.nextDouble();
-        System.out.println("Podaj wartość procentową zniżki");
-        double percentageOff = scanner.nextDouble();
+        double threshold = InputUtil.validateInputDouble(scanner, "Podaj wartość progową promocji");
+        double percentageOff = InputUtil.validateInputDouble(scanner, "Podaj wartość procentową obniżki");
 
         discount.addDiscountRule(threshold, percentageOff);
 
@@ -426,10 +420,8 @@ public class CommandLineInterface {
         discount.getDiscountRules()
                 .forEach(discount -> System.out.printf("%-20s | %-10.2f", discount.getThreshold(), discount.getPercentageOff()));
 
-        System.out.println("Wpisz wartość progową promocji, którą chcesz usunąć.");
-        double threshold = scanner.nextDouble();
-        System.out.println("Wpisz wartość procentową promocji którą chcesz usunąć.");
-        double percentageOff = scanner.nextDouble();
+        double threshold = InputUtil.validateInputDouble(scanner, "Wpisz wartość progową promocji, którą chcesz usunąć.");
+        double percentageOff = InputUtil.validateInputDouble(scanner, "Wpisz wartość procentową promocji którą chcesz usunąć.");
 
         for (Discount.DiscountRule discountRule : discount.getDiscountRules()) {
             if (discountRule.getThreshold() == threshold && discountRule.getPercentageOff() == percentageOff) {
@@ -450,14 +442,14 @@ public class CommandLineInterface {
         for (Processor processor : Processor.values()) {
             System.out.println(processor.ordinal() + 1 + ". " + processor + " - Cena: " + processor.getPrice() + " PLN");
         }
-        int processorChoice = scanner.nextInt();
+        int processorChoice = (int) InputUtil.validateInput(scanner, "Wpisz numer procesora");
         Processor selectedProcessor = Processor.values()[processorChoice - 1];
 
         System.out.println("Wybierz pamięć RAM:");
         for (RAM ram : RAM.values()) {
             System.out.println(ram.ordinal() + 1 + ". " + ram + " - Cena: " + ram.getPrice() + " PLN");
         }
-        int ramChoice = scanner.nextInt();
+        int ramChoice = (int) InputUtil.validateInput(scanner, "Wpisz numer RAMu");
         RAM selectedRam = RAM.values()[ramChoice - 1];
 
         System.out.println("Wpisz nazwę:");
@@ -507,21 +499,21 @@ public class CommandLineInterface {
         for (Colors color : Colors.values()) {
             System.out.println(color.ordinal() + 1 + ". " + color + " - Cena: " + color.getPrice() + " PLN");
         }
-        int colorChoice = scanner.nextInt();
+        int colorChoice = (int) InputUtil.validateInput(scanner, "Wpisz numer koloru");
         Colors selectedColor = Colors.values()[colorChoice - 1];
 
         System.out.println("Wybierz pojemność baterii:");
         for (BatteryCapacity battery : BatteryCapacity.values()) {
             System.out.println(battery.ordinal() + 1 + ". " + battery + " - Cena: " + battery.getPrice() + " PLN");
         }
-        int batteryChoice = scanner.nextInt();
+        int batteryChoice = (int) InputUtil.validateInput(scanner, "Wpisz numer baterii");
         BatteryCapacity selectedBattery = BatteryCapacity.values()[batteryChoice - 1];
 
         System.out.println("Wybierz akcesoria:");
         for (Accessories accessory : Accessories.values()) {
             System.out.println(accessory.ordinal() + 1 + ". " + accessory + " - Cena: " + accessory.getPrice() + " PLN");
         }
-        int accessoryChoice = scanner.nextInt();
+        int accessoryChoice = (int) InputUtil.validateInput(scanner, "Wpisz numer akcesorii");
         Accessories selectedAccessories = Accessories.values()[accessoryChoice - 1];
 
         System.out.println("Wpisz nazwę:");
