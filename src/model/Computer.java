@@ -38,8 +38,7 @@ public class Computer extends Product{
     @Override
     public String toString() {
         return super.toString() + ", " +
-                "Procesor: " + processor + ", " +
-                "Ram GB: " + ramGB + "\n" +
-                "-----------------------" + "\n";
+                "Procesor: " + processor.name() + ", " +
+                "Ram GB: " + ramGB.name() + "\n";
     }
 }

@@ -1,6 +1,6 @@
 package app;
 
-import services.Discount;
+import model.Discount;
 import services.OrderProcessor;
 import services.ProductManager;
 import ui.CommandLineInterface;

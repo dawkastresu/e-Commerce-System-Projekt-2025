@@ -1,15 +1,19 @@
-package services;
+package model;
+
+import services.DiscountRule;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Discount {
     private List<DiscountRule> discountRules;
 
+    Random random = new Random();
+
     public Discount() {
         this.discountRules = new ArrayList<>();
-        // Initialize with default discount rules
         addDiscountRule(3000, 10);
         addDiscountRule(5000, 20);
     }
@@ -23,11 +27,8 @@ public class Discount {
     }
 
     public void addDiscountRule(double threshold, double percentageOff) {
-        discountRules.add(new DiscountRule(threshold, percentageOff));
-    }
 
-    public void removeDiscountRule(DiscountRule discountRule) {
-        discountRules.remove(discountRule);
+        discountRules.add(new DiscountRule(threshold, percentageOff, random.nextLong(999999)));
     }
 
     public double applyDiscount(double totalPrice) {
@@ -49,28 +50,4 @@ public class Discount {
         System.out.println("Brak zniżki.");
     }
 
-    public static class DiscountRule implements Serializable {
-        private final double threshold;
-        private final double percentageOff;
-
-        public DiscountRule(double threshold, double percentageOff) {
-            this.threshold = threshold;
-            this.percentageOff = percentageOff;
-        }
-
-        public double getThreshold() {
-            return threshold;
-        }
-
-        public double getPercentageOff() {
-            return percentageOff;
-        }
-
-        @Override
-        public String toString() {
-            return "------------------------------------" + "\n" +
-                    "Wartość procentowa obniżki: " + percentageOff + "\n" +
-                    "Promocja na zakupy powyżej:  " + threshold;
-        }
-    }
 }

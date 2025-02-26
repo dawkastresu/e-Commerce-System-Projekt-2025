@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class Product implements Serializable {
 
@@ -13,6 +14,8 @@ public class Product implements Serializable {
     private int quantity;
 
     private ProductType type;
+
+    Random random;
 
     public enum ProductType {
         COMPUTER, SMARTPHONE, ELECTRONICS
@@ -27,7 +30,7 @@ public class Product implements Serializable {
     }
 
     public Product() {
-        this.id = 0L;
+        this.id = random.nextLong(999999);
         this.name = "Custom PC";
     }
 
@@ -77,6 +80,6 @@ public class Product implements Serializable {
                 "ID: " + id + ", " +
                 "Nazwa: " + name + ", " +
                 "Cena: " + price + ", " +
-                "Ilość w magazynie: " + quantity + ", ";
+                "Ilość w magazynie: " + quantity + ", " + "\n";
     }
 }

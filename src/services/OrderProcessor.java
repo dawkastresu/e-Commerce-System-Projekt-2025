@@ -1,6 +1,7 @@
 package services;
 
 import model.Cart;
+import model.Order;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -13,8 +14,6 @@ import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
 public class OrderProcessor {
-
-
 
     private List<Order> orders = new ArrayList<>();
 
