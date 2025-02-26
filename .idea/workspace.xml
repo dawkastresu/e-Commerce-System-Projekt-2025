@@ -4,7 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4cb98ce6-f907-4050-a191-8ce3de67acfb" name="Changes" comment="readme.md" />
+    <list default="true" id="17a323b5-f29d-410b-8545-eeef8d615e93" name="Changes" comment="readme.md">
+      <change afterPath="$PROJECT_DIR$/src/services/DiscountRule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/cart.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/discounts.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Files/products.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Files/products.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/App/ECommerceApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/App/ECommerceApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Computer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Computer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Product$ProductType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Product$ProductType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Product.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Product.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Smartphone.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Model/Smartphone.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/Discount$DiscountRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/Discount.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/Order.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/OrderProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/Services/OrderProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/e-Commerce-system/UI/CommandLineInterface.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/e-Commerce-system/UI/CommandLineInterface.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/ECommerceApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ECommerceApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Computer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Computer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Smartphone.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Smartphone.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/OrderProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/OrderProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ui/CommandLineInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ui/CommandLineInterface.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,12 +57,12 @@
     &quot;assignee&quot;: &quot;dawkastresu&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/dawkastresu/e-Commerce-System-Projekt-2025.git",
-    "accountId": "d0212d3e-872c-4592-b910-e0ee0c8465fe"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/dawkastresu/e-Commerce-System-Projekt-2025.git&quot;,
+    &quot;accountId&quot;: &quot;d0212d3e-872c-4592-b910-e0ee0c8465fe&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -49,18 +74,18 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ECommerceApp.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "develop",
-    "kotlin-language-version-configured": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ECommerceApp.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;#1 on feature/project&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ECommerceApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="App.ECommerceApp" />
+      <option name="MAIN_CLASS_NAME" value="app.ECommerceApp" />
       <module name="e-Commerce-system" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -69,13 +94,17 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.ECommerceApp" />
+        <item itemvalue="Application.ECommerceApp" />
+        <item itemvalue="Application.ECommerceApp" />
+        <item itemvalue="Application.ECommerceApp" />
+        <item itemvalue="Application.ECommerceApp" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4cb98ce6-f907-4050-a191-8ce3de67acfb" name="Changes" comment="" />
+      <changelist id="17a323b5-f29d-410b-8545-eeef8d615e93" name="Changes" comment="readme.md" />
       <created>1736166388573</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -193,7 +222,39 @@
       <option name="project" value="LOCAL" />
       <updated>1738252972640</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="readme.md">
+      <option name="closed" value="true" />
+      <created>1739997899298</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1739997899298</updated>
+    </task>
+    <task id="LOCAL-00016" summary="readme.md">
+      <option name="closed" value="true" />
+      <created>1739997962578</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1739997962578</updated>
+    </task>
+    <task id="LOCAL-00017" summary="readme.md">
+      <option name="closed" value="true" />
+      <created>1739998935952</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1739998935952</updated>
+    </task>
+    <task id="LOCAL-00018" summary="readme.md">
+      <option name="closed" value="true" />
+      <created>1739999309463</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1739999309463</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -232,5 +293,15 @@
     <MESSAGE value="dev del" />
     <MESSAGE value="readme.md" />
     <option name="LAST_COMMIT_MESSAGE" value="readme.md" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ClassCastException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
